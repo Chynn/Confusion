@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Confusion</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_instruction">InstructionActivity</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_highscore">HighscoreActivity</string>
+    <string name="title_activity_score">ScoreActivity</string>
+</resources>
