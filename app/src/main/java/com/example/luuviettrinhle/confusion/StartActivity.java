@@ -1,15 +1,33 @@
 package com.example.luuviettrinhle.confusion;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 import android.view.View;
-import android.content.Intent;
 
 
 public class StartActivity extends ActionBarActivity {
+
+    MediaPlayer medPlay;
+    private boolean soundState = true;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        medPlay.release();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
+
+        medPlay = MediaPlayer.create(this, R.raw.sakuraseason);
+        medPlay.start();
+    }
 
     public void onButtonClick(View v) {
         if (v.getId() == R.id.playButton) {
@@ -21,15 +39,16 @@ public class StartActivity extends ActionBarActivity {
         } else if (v.getId() == R.id.instructionButton) {
             Intent intent = new Intent(this, InstructionActivity.class);
             startActivity(intent);
+        } else if (v.getId() == R.id.soundButton){
+            if(soundState){
+                medPlay.pause();
+                soundState = false;
+            }else {
+                medPlay.start();
+                soundState = true;
+            }
         }
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
