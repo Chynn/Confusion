@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 
 public class StartActivity extends ActionBarActivity {
@@ -15,15 +16,18 @@ public class StartActivity extends ActionBarActivity {
     private boolean soundState = true;
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        medPlay.release();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        //terminates the app, when exitButton is clicked
+        ImageButton exitButton = (ImageButton)findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         medPlay = MediaPlayer.create(this, R.raw.sakuraseason);
         medPlay.start();
