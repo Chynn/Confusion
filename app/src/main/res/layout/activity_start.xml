@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/playButton"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="50dp"
         android:onClick="onButtonClick"
         android:src="@drawable/playbutton"
         android:background="@null"
@@ -54,4 +54,13 @@
         android:src="@drawable/exit50"
         android:background="@null"
         android:onClick="onButtonClick"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleLogo"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/playButton"
+        android:layout_below="@id/soundButton"/>
 </RelativeLayout>
