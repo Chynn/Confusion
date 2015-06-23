@@ -11,15 +11,20 @@
         android:id="@+id/highscoreButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:onClick="onButtonClick"/>
+        android:src="@drawable/rang70"
+        android:background="@null"
+        android:onClick="onButtonClick"
+        android:layout_alignBottom="@+id/exitButton"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/instructionButton"
+        android:src="@drawable/burgermenu40"
+        android:background="@null"
+        android:onClick="onButtonClick"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onButtonClick"/>
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -34,14 +39,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/soundButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:onClick="onButtonClick"/>
+        android:onClick="onButtonClick"
+        android:src="@drawable/speaker"
+        android:background="@null" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/exitButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/exit50"
+        android:background="@null"/>
 </RelativeLayout>
