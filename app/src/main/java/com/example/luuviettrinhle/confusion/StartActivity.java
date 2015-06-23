@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 public class StartActivity extends ActionBarActivity {
 
     MediaPlayer medPlay;
-    //private boolean soundState = true;
+    private boolean soundState = true;
 
 
     @Override
@@ -21,24 +21,8 @@ public class StartActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        //terminates the app, when exitButton is clicked
-        ImageButton exitButton = (ImageButton)findViewById(R.id.exitButton);
-        exitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                System.exit(0);
-            }
-        });
-
         medPlay = MediaPlayer.create(this, R.raw.sakuraseason);
         medPlay.start();
-    }
-
-    @Override
-    protected void onDestroy() {
-        medPlay.release();
-        super.onDestroy();
     }
 
     public void onButtonClick(View v) {
@@ -52,14 +36,19 @@ public class StartActivity extends ActionBarActivity {
             Intent intent = new Intent(this, InstructionActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.soundButton){
-            if(medPlay.isPlaying()){
+            if(soundState){
                 medPlay.pause();
-                //soundState = false;
+                soundState = false;
             }else {
-                medPlay.seekTo(0);
                 medPlay.start();
-                //soundState = true;
+                soundState = true;
             }
+        }else if (v.getId() == R.id.exitButton){
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
         }
     }
 

@@ -1,10 +1,17 @@
 <resources>
     <string name="app_name">Confusion</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_instruction">InstructionActivity</string>
-    <string name="title_activity_game">GameActivity</string>
-    <string name="title_activity_highscore">HighscoreActivity</string>
-    <string name="title_activity_score">ScoreActivity</string>
+
+    <!-- activity title strings-->
+    <string name="title_activity_instruction">Instruction</string>
+    <string name="title_activity_game">Confusion</string>
+    <string name="title_activity_highscore">Highscore</string>
+    <string name="title_activity_score">Score</string>
+
+    <!-- TextView Strings -->
+    <string name="instructionTitle"> Welcome to Confusion! </string>
+    <string name="instructionTxt">"Your task is to touch the symbol displayed on the navigation bar. Touch it as fast and often as you can. You have only 2 minutes!\n \n Dont let yourself get confused with the colors we prepared. Challenge your eyes and sleight of hand. Defeat the high scores of your friends and <b>BE</b> the one to confuse!"</string>
+    <string name="nameInput">"<i>Type in your name</i>"</string>
+    <string name="scoreTitle">Your Score</string>
 </resources>

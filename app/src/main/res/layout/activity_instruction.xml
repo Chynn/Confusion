@@ -13,10 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/playButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="71dp"
-        android:onClick="onButtonClick"/>
+        android:onClick="onButtonClick"
+        android:src="@drawable/playbutton"
+        android:background="@null"
+        android:layout_above="@+id/homeButton"
+        android:layout_alignStart="@+id/homeButton" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -24,5 +25,28 @@
         android:id="@+id/homeButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onButtonClick"/>
+        android:onClick="onButtonClick"
+        android:src="@drawable/homebutton"
+        android:background="@null"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="33sp"
+        android:text="@string/instructionTitle"
+        android:id="@+id/instructionTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/instructionTxt"
+        android:id="@+id/instructionText"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_below="@+id/instructionTitle"
+        android:layout_marginTop="10dp"/>
+
+
 </RelativeLayout>

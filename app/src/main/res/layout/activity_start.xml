@@ -30,10 +30,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/playButton"
-        android:layout_above="@+id/instructionButton"
-        android:layout_alignStart="@+id/instructionButton"
-        android:layout_marginBottom="106dp"
-        android:onClick="onButtonClick"/>
+        android:layout_marginBottom="71dp"
+        android:onClick="onButtonClick"
+        android:src="@drawable/playbutton"
+        android:background="@null"
+        android:layout_above="@+id/highscoreButton"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -50,5 +52,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/exit50"
-        android:background="@null"/>
+        android:background="@null"
+        android:onClick="onButtonClick"/>
 </RelativeLayout>

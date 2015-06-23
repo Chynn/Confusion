@@ -14,6 +14,7 @@ public class GameActivity extends ActionBarActivity {
         if (v.getId() == R.id.backButton) {
             Intent intent = new Intent(this, StartActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 

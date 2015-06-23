@@ -22,6 +22,7 @@ public class ScoreActivity extends ActionBarActivity {
         } else if (v.getId() == R.id.homeButton) {
             Intent intent = new Intent(this, StartActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -29,6 +30,14 @@ public class ScoreActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+
+        Typeface baushausFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
+        TextView sTitle = (TextView)findViewById(R.id.scoreTitle);
+        sTitle.setTypeface(baushausFont);
+
+        Typeface arialFont = Typeface.createFromAsset(getAssets(), "arial.ttf");
+        TextView sInput = (TextView)findViewById(R.id.nameInput);
+        sInput.setTypeface(arialFont);
     }
 
 
