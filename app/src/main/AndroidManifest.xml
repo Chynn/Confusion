@@ -25,7 +25,7 @@
             android:label="@string/title_activity_game" >
         </activity>
         <activity
-            android:name=".HighscoreActivity"
+            android:name="dbSQLite.HighscoreActivity"
             android:label="@string/title_activity_highscore" >
         </activity>
         <activity
