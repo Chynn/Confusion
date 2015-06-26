@@ -7,7 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+
+import dbSQLite.HighscoreActivity;
 
 
 public class StartActivity extends ActionBarActivity {
