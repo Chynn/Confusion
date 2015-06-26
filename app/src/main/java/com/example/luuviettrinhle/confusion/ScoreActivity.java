@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import dbSQLite.HighscoreActivity;
+
 
 public class ScoreActivity extends ActionBarActivity {
 
