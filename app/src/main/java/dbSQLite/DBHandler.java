@@ -90,17 +90,15 @@ public class DBHandler extends SQLiteOpenHelper{
         return score;
     }
 
-    //get all scores in a list -- gibt nur letzten Eintrag aus!!!
+    //get all scores in a list
     public List<Score> getAllScores(){
 
         SQLiteDatabase db = getWritableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME;
         //Query: select all
-        Cursor cursor = db.rawQuery(selectQuery, null); // KNALLT HIER!
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
         List<Score> scoreList = new ArrayList<Score>();
-
-        //Score score = new Score();
 
         //do-while-loop: go through all rows and add to scoreList
         if (cursor.moveToFirst()){
