@@ -1,18 +1,94 @@
 package com.example.luuviettrinhle.confusion;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+
+import java.util.Random;
 
 
 public class GameActivity extends ActionBarActivity {
+
+    Resources res;
+    ImageButton imgBtn1, imgBtn2, imgBtn3;
+    Random r = new Random();
+    int lastPerm = 0;
+    int permPos = 0;
+    Drawable[][] permutations;
+    Drawable recRed, recGreen, recBlue;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+
+        res = getResources();
+        recRed = res.getDrawable(R.drawable.rectangle2);
+        recGreen = res.getDrawable(R.drawable.rectangle1);
+        recBlue = res.getDrawable(R.drawable.rectangle3);
+
+        permutations = new Drawable[][]{
+            {recGreen,recRed,recBlue}, //left
+            {recRed,recGreen,recBlue}, //mid
+            {recRed,recBlue,recGreen}, //right
+            {recBlue,recRed,recGreen}, //right
+            {recBlue,recGreen,recRed}, //mid
+            {recGreen,recBlue,recRed}  //left
+        };
+
+        imgBtn1 = (ImageButton)findViewById(R.id.iBtn1);
+        imgBtn2 = (ImageButton)findViewById(R.id.iBtn2);
+        imgBtn3 = (ImageButton)findViewById(R.id.iBtn3);
+
+        //permPos anfangs = 0
+        setImageButtons(permPos);
+
+    }
+
+    public void setImageButtons(int permPos){
+        imgBtn1.setImageDrawable(permutations[permPos][0]);
+        imgBtn2.setImageDrawable(permutations[permPos][1]);
+        imgBtn3.setImageDrawable(permutations[permPos][2]);
+    }
+
+    public void onImageButtonClick(View v) {
+
+        if (v.getId() == R.id.iBtn1) {
+            if (imgBtn1.getDrawable() == recGreen) {
+                while (permPos == lastPerm) {
+                    permPos = r.nextInt(permutations.length);
+                }
+                lastPerm = permPos;
+                setImageButtons(permPos);
+            }
+
+        } else if (v.getId() == R.id.iBtn2) {
+            if (imgBtn2.getDrawable() == recGreen) {
+                while (permPos == lastPerm) {
+                    permPos = r.nextInt(permutations.length);
+                }
+                lastPerm = permPos;
+                setImageButtons(permPos);
+            }
+
+        } else if (v.getId() == R.id.iBtn3) {
+            if (imgBtn3.getDrawable() == recGreen) {
+                while (permPos == lastPerm) {
+                    permPos = r.nextInt(permutations.length);
+                }
+                lastPerm = permPos;
+                setImageButtons(permPos);
+            }
+        }
+    }
 
     public void onButtonClick(View v) {
         if (v.getId() == R.id.backButton) {
@@ -20,35 +96,6 @@ public class GameActivity extends ActionBarActivity {
             startActivity(intent);
             finish();
         }
-    }
-
-    public class MyView extends View{
-
-        public MyView(Context context){
-            super(context);
-        }
-
-        @Override
-        protected void onDraw(Canvas canvas){
-            super.onDraw(canvas);
-            int x = getWidth();
-            int y = getHeight();
-            int radius;
-            radius = 100;
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.WHITE);
-            canvas.drawPaint(paint);
-            // Use Color.parseColor to define HTML colors
-            paint.setColor(Color.parseColor("#CD5C5C"));
-            canvas.drawCircle(x / 2, y / 2, radius, paint);
-        }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(new MyView(this));
     }
 
 

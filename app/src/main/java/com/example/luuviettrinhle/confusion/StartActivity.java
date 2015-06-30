@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 import dbSQLite.HighscoreActivity;
 
@@ -15,6 +16,7 @@ public class StartActivity extends ActionBarActivity {
 
     MediaPlayer medPlay;
     private boolean soundState = true;
+    ImageButton soundOff;
 
 
     @Override
@@ -38,9 +40,12 @@ public class StartActivity extends ActionBarActivity {
             startActivity(intent);
         } else if (v.getId() == R.id.soundButton){
             if(soundState){
+                soundOff = (ImageButton)findViewById(R.id.soundButton);
+                soundOff.setImageResource(R.drawable.soundoff);
                 medPlay.pause();
                 soundState = false;
             }else {
+                soundOff.setImageResource(R.drawable.speaker);
                 medPlay.start();
                 soundState = true;
             }

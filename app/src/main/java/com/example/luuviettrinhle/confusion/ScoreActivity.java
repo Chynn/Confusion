@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import dbSQLite.HighscoreActivity;
 
 
 public class ScoreActivity extends ActionBarActivity {
+
+    EditText inputName;
 
     public void onButtonClick(View v) {
         if (v.getId() == R.id.highscoreButton) {
@@ -25,6 +28,8 @@ public class ScoreActivity extends ActionBarActivity {
             Intent intent = new Intent(this, StartActivity.class);
             startActivity(intent);
             finish();
+        } else if (v.getId() == R.id.saveButton){
+            //put into db
         }
     }
 
@@ -40,6 +45,8 @@ public class ScoreActivity extends ActionBarActivity {
         Typeface arialFont = Typeface.createFromAsset(getAssets(), "arial.ttf");
         TextView sInput = (TextView)findViewById(R.id.nameInput);
         sInput.setTypeface(arialFont);
+
+        inputName = (EditText)findViewById(R.id.nameInput);
     }
 
 
