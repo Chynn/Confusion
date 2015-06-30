@@ -10,6 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -18,11 +21,13 @@ public class GameActivity extends ActionBarActivity {
 
     Resources res;
     ImageButton imgBtn1, imgBtn2, imgBtn3;
+    TextView tv;
     Random r = new Random();
     int lastPerm = 0;
     int permPos = 0;
     Drawable[][] permutations;
     Drawable recRed, recGreen, recBlue;
+    int score = 0;
 
 
     @Override
@@ -48,9 +53,11 @@ public class GameActivity extends ActionBarActivity {
         imgBtn2 = (ImageButton)findViewById(R.id.iBtn2);
         imgBtn3 = (ImageButton)findViewById(R.id.iBtn3);
 
+        tv = (TextView)findViewById(R.id.scoreTextView);
+        tv.setText("" + score);
+
         //permPos anfangs = 0
         setImageButtons(permPos);
-
     }
 
     public void setImageButtons(int permPos){
@@ -68,7 +75,9 @@ public class GameActivity extends ActionBarActivity {
                 }
                 lastPerm = permPos;
                 setImageButtons(permPos);
-            }
+                score++;
+            }else if(score > 0) score--;
+            tv.setText("" + score);
 
         } else if (v.getId() == R.id.iBtn2) {
             if (imgBtn2.getDrawable() == recGreen) {
@@ -77,7 +86,9 @@ public class GameActivity extends ActionBarActivity {
                 }
                 lastPerm = permPos;
                 setImageButtons(permPos);
-            }
+                score++;
+            }else if(score > 0) score--;
+            tv.setText("" + score);
 
         } else if (v.getId() == R.id.iBtn3) {
             if (imgBtn3.getDrawable() == recGreen) {
@@ -86,7 +97,9 @@ public class GameActivity extends ActionBarActivity {
                 }
                 lastPerm = permPos;
                 setImageButtons(permPos);
-            }
+                score++;
+            }else if(score > 0) score--;
+            tv.setText("" + score);
         }
     }
 
@@ -95,9 +108,13 @@ public class GameActivity extends ActionBarActivity {
             Intent intent = new Intent(this, StartActivity.class);
             startActivity(intent);
             finish();
+        } if(v.getId() == R.id.button){
+            Intent scoreScreen = new Intent(this, ScoreActivity.class);
+            scoreScreen.putExtra("scoreTextView", "" + score);
+            startActivity(scoreScreen);
+            finish();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

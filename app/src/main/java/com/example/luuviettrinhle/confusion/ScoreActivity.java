@@ -38,15 +38,21 @@ public class ScoreActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        Typeface baushausFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
+        Typeface bauhausFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
         TextView sTitle = (TextView)findViewById(R.id.scoreTitle);
-        sTitle.setTypeface(baushausFont);
+        sTitle.setTypeface(bauhausFont);
 
         Typeface arialFont = Typeface.createFromAsset(getAssets(), "arial.ttf");
         TextView sInput = (TextView)findViewById(R.id.nameInput);
         sInput.setTypeface(arialFont);
 
+        TextView scoreTV= (TextView)findViewById(R.id.scoreTextView);
         inputName = (EditText)findViewById(R.id.nameInput);
+
+        Intent intent = getIntent();
+        String highscore = intent.getStringExtra("scoreTextView");
+
+        scoreTV.setText(highscore);
     }
 
 

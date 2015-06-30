@@ -88,4 +88,12 @@
         android:layout_toEndOf="@+id/nameInput"
         android:layout_marginStart="25dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scoreTextView"
+        android:layout_below="@+id/scoreTitle"
+        android:layout_alignStart="@+id/highscoreButton"
+        android:layout_marginTop="35dp" />
+
 </RelativeLayout>
