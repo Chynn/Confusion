@@ -17,7 +17,7 @@ import java.util.List;
 import dbSQLite.DBHandler;
 import dbSQLite.Score;
 
-
+//
 public class HighscoreActivity extends ActionBarActivity {
 
     private static String TAG = HighscoreActivity.class.getSimpleName();
