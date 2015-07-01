@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,9 @@ public class GameActivity extends ActionBarActivity {
     Drawable recRed, recGreen, recBlue;
     int score = 0;
     int timerI = 0;
+    String[] times;
+    private final static int interval = 1000;
+    Handler timeHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +66,29 @@ public class GameActivity extends ActionBarActivity {
         //permPos anfangs = 0
         setImageButtons(permPos);
 
-
-
-        String[] times = new String[59];
+        times = new String[29];
         for (int i=0;i<times.length;i++){
             times[i] = ""+i;
-            i++;
         }
 
-        new TimeTask().execute(times);
+        startRepeatingTimerTask();
+
+    }
+
+    final Runnable timeHandlerTask = new Runnable() {
+        @Override
+        public void run() {
+            new TimeTask().execute(times);
+            timeHandler.postDelayed(timeHandlerTask, interval);
+        }
+    };
+
+    private void startRepeatingTimerTask(){
+        timeHandlerTask.run();
+    }
+
+    private void stopRepeatingTimerTask(){
+        timeHandler.removeCallbacks(timeHandlerTask);
     }
 
     private class TimeTask extends AsyncTask<String, Void, String> {
@@ -82,7 +100,14 @@ public class GameActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String time) {
-            timerTV.setText(time);
+            if((Integer.parseInt(time)) == 5){
+                stopRepeatingTimerTask();
+                Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
+                startActivity(intent);
+                finish();
+            }else {
+                timerTV.setText(time);
+            }
         }
     }
 
