@@ -157,11 +157,13 @@ public class GameActivity extends ActionBarActivity {
 
     public void onButtonClick(View v) {
         if (v.getId() == R.id.backButton) {
+            stopRepeatingTimerTask();
             timerI = 0;
             Intent intent = new Intent(this, StartActivity.class);
             startActivity(intent);
             finish();
         } if(v.getId() == R.id.button){
+            stopRepeatingTimerTask();
             timerI = 0;
             Intent scoreScreen = new Intent(this, ScoreActivity.class);
             scoreScreen.putExtra("scoreTextView", "" + score);
