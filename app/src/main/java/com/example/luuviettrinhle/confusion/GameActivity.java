@@ -103,8 +103,9 @@ public class GameActivity extends ActionBarActivity {
             if((Integer.parseInt(time)) == 5){
                 stopRepeatingTimerTask();
                 timerI = 0;
-                Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
-                startActivity(intent);
+                Intent scoreScreen = new Intent(GameActivity.this, ScoreActivity.class);
+                scoreScreen.putExtra("scoreTextView", "" + score);
+                startActivity(scoreScreen);
                 finish();
             }else {
                 timerTV.setText(time);
@@ -161,13 +162,6 @@ public class GameActivity extends ActionBarActivity {
             timerI = 0;
             Intent intent = new Intent(this, StartActivity.class);
             startActivity(intent);
-            finish();
-        } if(v.getId() == R.id.button){
-            stopRepeatingTimerTask();
-            timerI = 0;
-            Intent scoreScreen = new Intent(this, ScoreActivity.class);
-            scoreScreen.putExtra("scoreTextView", "" + score);
-            startActivity(scoreScreen);
             finish();
         }
     }
