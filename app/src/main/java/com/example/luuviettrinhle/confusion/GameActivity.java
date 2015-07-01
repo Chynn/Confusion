@@ -3,6 +3,7 @@ package com.example.luuviettrinhle.confusion;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,14 +22,14 @@ public class GameActivity extends ActionBarActivity {
 
     Resources res;
     ImageButton imgBtn1, imgBtn2, imgBtn3;
-    TextView tv;
+    TextView scoreTV, timerTV;
     Random r = new Random();
     int lastPerm = 0;
     int permPos = 0;
     Drawable[][] permutations;
     Drawable recRed, recGreen, recBlue;
     int score = 0;
-
+    int timerI = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +54,36 @@ public class GameActivity extends ActionBarActivity {
         imgBtn2 = (ImageButton)findViewById(R.id.iBtn2);
         imgBtn3 = (ImageButton)findViewById(R.id.iBtn3);
 
-        tv = (TextView)findViewById(R.id.scoreTextView);
-        tv.setText("" + score);
+        timerTV = (TextView)findViewById(R.id.timeTextView);
+
+        scoreTV = (TextView)findViewById(R.id.scoreTextView);
+        scoreTV.setText("" + score);
 
         //permPos anfangs = 0
         setImageButtons(permPos);
+
+
+
+        String[] times = new String[59];
+        for (int i=0;i<times.length;i++){
+            times[i] = ""+i;
+            i++;
+        }
+
+        new TimeTask().execute(times);
+    }
+
+    private class TimeTask extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String[] times) {
+            String currentTime = times[timerI];
+            timerI++;
+            return currentTime;
+        }
+
+        protected void onPostExecute(String time) {
+            timerTV.setText(time);
+        }
     }
 
     public void setImageButtons(int permPos){
@@ -66,7 +92,7 @@ public class GameActivity extends ActionBarActivity {
         imgBtn3.setImageDrawable(permutations[permPos][2]);
     }
 
-    public void onImageButtonClick(View v) {
+        public void onImageButtonClick(View v) {
 
         if (v.getId() == R.id.iBtn1) {
             if (imgBtn1.getDrawable() == recGreen) {
@@ -77,7 +103,7 @@ public class GameActivity extends ActionBarActivity {
                 setImageButtons(permPos);
                 score++;
             }else if(score > 0) score--;
-            tv.setText("" + score);
+            scoreTV.setText("" + score);
 
         } else if (v.getId() == R.id.iBtn2) {
             if (imgBtn2.getDrawable() == recGreen) {
@@ -88,7 +114,7 @@ public class GameActivity extends ActionBarActivity {
                 setImageButtons(permPos);
                 score++;
             }else if(score > 0) score--;
-            tv.setText("" + score);
+            scoreTV.setText("" + score);
 
         } else if (v.getId() == R.id.iBtn3) {
             if (imgBtn3.getDrawable() == recGreen) {
@@ -99,7 +125,7 @@ public class GameActivity extends ActionBarActivity {
                 setImageButtons(permPos);
                 score++;
             }else if(score > 0) score--;
-            tv.setText("" + score);
+            scoreTV.setText("" + score);
         }
     }
 

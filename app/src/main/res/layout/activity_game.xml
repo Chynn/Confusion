@@ -62,5 +62,11 @@
         android:layout_toStartOf="@+id/iBtn2"
         android:onClick="onButtonClick"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeTextView"
+        android:layout_alignEnd="@+id/iBtn2" />
+
 
 </RelativeLayout>
