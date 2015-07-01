@@ -32,12 +32,15 @@ public class StartActivity extends ActionBarActivity {
         if (v.getId() == R.id.playButton) {
             Intent intent = new Intent(this, GameActivity.class);
             startActivity(intent);
+            finish();
         } else if (v.getId() == R.id.highscoreButton) {
             Intent intent = new Intent(this, HighscoreActivity.class);
             startActivity(intent);
+            finish();
         } else if (v.getId() == R.id.instructionButton) {
             Intent intent = new Intent(this, InstructionActivity.class);
             startActivity(intent);
+            finish();
         } else if (v.getId() == R.id.soundButton){
             if(soundState){
                 soundOff = (ImageButton)findViewById(R.id.soundButton);
