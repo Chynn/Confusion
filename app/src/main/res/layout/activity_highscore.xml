@@ -11,9 +11,9 @@
         android:layout_height="400dp"
         android:text="Highscore"
         android:id="@+id/viewHighscore"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="59dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/backButton"
+        android:layout_alignParentTop="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -21,5 +21,8 @@
         android:id="@+id/backButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onButtonClick"/>
+        android:onClick="onButtonClick"
+        android:src="@drawable/homebutton"
+        android:background="@null"
+        android:layout_marginBottom="15dp"/>
 </RelativeLayout>
