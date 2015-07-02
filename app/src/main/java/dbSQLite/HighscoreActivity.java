@@ -25,11 +25,8 @@ import dbSQLite.Score;
 
 public class HighscoreActivity extends ListActivity {
 
-    //Score index = new Score();
-
     private DBHandler dbHandler;
     private List<Score> scoreL;
-    //private  String scores[] = {index.getName()};
 
     //content
     private ArrayList<String> scoresList = new ArrayList<String>();

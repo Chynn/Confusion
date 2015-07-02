@@ -17,7 +17,6 @@ import dbSQLite.HighscoreActivity;
 
 public class ScoreActivity extends ActionBarActivity {
 
-    DBHandler db;
     TextView scoreTV;
     EditText inputName;
 
