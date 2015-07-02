@@ -2,19 +2,15 @@ package com.example.luuviettrinhle.confusion;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -28,7 +24,7 @@ public class GameActivity extends ActionBarActivity {
     int lastPerm = 0;
     int permPos = 0;
     Drawable[][] permutations;
-    Drawable recRed, recGreen, recBlue;
+    Drawable ovRed, ovGreen, ovPurple;
     int score = 0;
     int timerI = 0;
     String[] times;
@@ -40,18 +36,27 @@ public class GameActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        res = getResources();
-        recRed = res.getDrawable(R.drawable.rectangle2);
-        recGreen = res.getDrawable(R.drawable.rectangle1);
-        recBlue = res.getDrawable(R.drawable.rectangle3);
+        Typeface bauhausFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
+        TextView timer = (TextView)findViewById(R.id.timeTextView);
+        timer.setTypeface(bauhausFont);
+
+        Typeface bauFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
+        TextView scores = (TextView)findViewById(R.id.scoreTextView);
+        scores.setTypeface(bauFont);
+
+
+        res = getResources();//
+        ovRed = res.getDrawable(R.drawable.oval2);
+        ovGreen = res.getDrawable(R.drawable.oval1);
+        ovPurple = res.getDrawable(R.drawable.oval3);
 
         permutations = new Drawable[][]{
-            {recGreen,recRed,recBlue}, //left
-            {recRed,recGreen,recBlue}, //mid
-            {recRed,recBlue,recGreen}, //right
-            {recBlue,recRed,recGreen}, //right
-            {recBlue,recGreen,recRed}, //mid
-            {recGreen,recBlue,recRed}  //left
+            {ovGreen,ovRed,ovPurple}, //left
+            {ovRed,ovGreen,ovPurple}, //mid
+            {ovRed,ovPurple,ovGreen}, //right
+            {ovPurple,ovRed,ovGreen}, //right
+            {ovPurple,ovGreen,ovRed}, //mid
+            {ovGreen,ovPurple,ovRed}  //left
         };
 
         imgBtn1 = (ImageButton)findViewById(R.id.iBtn1);
@@ -61,7 +66,7 @@ public class GameActivity extends ActionBarActivity {
         timerTV = (TextView)findViewById(R.id.timeTextView);
 
         scoreTV = (TextView)findViewById(R.id.scoreTextView);
-        scoreTV.setText("" + score);
+        scoreTV.setText("Score: " + score);
 
         //permPos anfangs = 0
         setImageButtons(permPos);
@@ -108,7 +113,7 @@ public class GameActivity extends ActionBarActivity {
                 startActivity(scoreScreen);
                 finish();
             }else {
-                timerTV.setText(time);
+                timerTV.setText("Time: " + time);
             }
         }
     }
@@ -119,32 +124,41 @@ public class GameActivity extends ActionBarActivity {
         imgBtn3.setImageDrawable(permutations[permPos][2]);
     }
 
-    public void onImageButtonClick(View v) {
-        if (v.getId() == R.id.iBtn1) {
-            if (imgBtn1.getDrawable() == recGreen) {
-                ifIsGreen();
-            } else if(score > 0) score--;
-            scoreTV.setText("" + score);
-        } else if (v.getId() == R.id.iBtn2) {
-            if (imgBtn2.getDrawable() == recGreen) {
-                ifIsGreen();
-            } else if (score > 0) score--;
-            scoreTV.setText("" + score);
-        } else if (v.getId() == R.id.iBtn3) {
-            if (imgBtn3.getDrawable() == recGreen) {
-                ifIsGreen();
-            } else if (score > 0) score--;
-            scoreTV.setText("" + score);
-        }
-    }
+        public void onImageButtonClick(View v) {
 
-    public void ifIsGreen(){
-        while (permPos == lastPerm) {
-            permPos = r.nextInt(permutations.length);
+        if (v.getId() == R.id.iBtn1) {
+            if (imgBtn1.getDrawable() == ovGreen) {
+                while (permPos == lastPerm) {
+                    permPos = r.nextInt(permutations.length);
+                }
+                lastPerm = permPos;
+                setImageButtons(permPos);
+                score++;
+            }else if(score > 0) score--;
+            scoreTV.setText("Score: " + score);
+
+        } else if (v.getId() == R.id.iBtn2) {
+            if (imgBtn2.getDrawable() == ovGreen) {
+                while (permPos == lastPerm) {
+                    permPos = r.nextInt(permutations.length);
+                }
+                lastPerm = permPos;
+                setImageButtons(permPos);
+                score++;
+            }else if(score > 0) score--;
+            scoreTV.setText("Score: " + score);
+
+        } else if (v.getId() == R.id.iBtn3) {
+            if (imgBtn3.getDrawable() == ovGreen) {
+                while (permPos == lastPerm) {
+                    permPos = r.nextInt(permutations.length);
+                }
+                lastPerm = permPos;
+                setImageButtons(permPos);
+                score++;
+            }else if(score > 0) score--;
+            scoreTV.setText("Score: " + score);
         }
-        lastPerm = permPos;
-        setImageButtons(permPos);
-        score++;
     }
 
     public void onButtonClick(View v) {
@@ -155,27 +169,5 @@ public class GameActivity extends ActionBarActivity {
             startActivity(intent);
             finish();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_game, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
