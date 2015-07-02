@@ -17,7 +17,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:text="@string/textView"
+        android:text="@string/highscoreTV"
         android:textSize="40sp"
         android:textColor="#4b7293"
         android:layout_marginBottom="20dp"/>

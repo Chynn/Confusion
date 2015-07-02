@@ -11,9 +11,11 @@
 
     <!-- TextView Strings -->
     <string name="instructionTitle"> Welcome to Confusion! </string>
-    <string name="instructionTxt">"Touch the green circle as often as you can . You have a period of 10 seconds. \n \n Don't let yourself get confused with the colors we prepared. With every touch on the other circles you miss a point. Challenge your eyes and sleight of hand. Defeat the high scores of your friends and <b>BE</b> the one to confuse!"</string>
+    <string name="instructionTxt">"Touch the green circle as often as you can. You have a period of 10 seconds. \n \n Don't let yourself get confused with the colors we prepared. With every touch on the wrong circle, you will miss a point. Challenge your eyes and sleight of hand. Defeat the highscores of your friends and <b>BE</b> the one to confuse!"</string>
     <string name="nameInput">"<i>Type in your name</i>"</string>
     <string name="scoreTitle">Your Score</string>
     <string name="scoreDefault">0</string>
-    <string name="textView">Highscore</string>
+    <string name="highscoreTV">Highscore</string>
+    <string name="scoreTV">Score:</string>
+    <string name="timeTV">Time:</string>
 </resources>
