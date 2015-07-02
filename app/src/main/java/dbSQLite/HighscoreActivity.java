@@ -49,11 +49,6 @@ public class HighscoreActivity extends ListActivity {
         scoreL = new ArrayList<Score>();
         scoreL = dbHandler.getAllScores();
 
-        //for (Score score : scoreL) {
-        //    String log = "Id: " + score.getID() + ", Name:" + score.getName() + ", Score: " + score.getScore();
-        //    Log.d("player: ", log);
-        //}
-
         for (int i = 0; i<scoreL.size(); i++){
             scoresList.add(scoreL.get(i).getID() + ". " + " " + scoreL.get(i).getName() + " " + scoreL.get(i).getScore());
         }
