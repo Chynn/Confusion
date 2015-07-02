@@ -42,6 +42,9 @@ public class HighscoreActivity extends ActionBarActivity {
             String log = "Id: " + score.getID() + ", Name:" + score.getName() + ", Score: " + score.getScore();
             Log.d("player: ", log);
         }
+
+        Intent intent = getIntent();
+        String highscore = intent.getStringExtra("scoreTextView");
     }
 
     public void onButtonClick(View v) {
