@@ -18,42 +18,50 @@ public class StartActivity extends ActionBarActivity {
     private boolean soundState = true;
     ImageButton soundOff;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        //start music
         medPlay = MediaPlayer.create(this, R.raw.sakuraseason);
         medPlay.start();
-
     }
 
     public void onButtonClick(View v) {
+        //open gameScreen
         if (v.getId() == R.id.playButton) {
-            Intent intent = new Intent(this, GameActivity.class);
-            startActivity(intent);
+            Intent gameScreen = new Intent(this, GameActivity.class);
+            startActivity(gameScreen);
             finish();
+        //open highscoreScreen
         } else if (v.getId() == R.id.highscoreButton) {
             Intent highscoreScreen = new Intent(this, HighscoreActivity.class);
+            //transfer screen
+            //1 = startScreen
             highscoreScreen.putExtra("Screen", "1");
             startActivity(highscoreScreen);
             finish();
+        //open insctructionScreen
         } else if (v.getId() == R.id.instructionButton) {
-            Intent intent = new Intent(this, InstructionActivity.class);
-            startActivity(intent);
+            Intent insctructionScreen = new Intent(this, InstructionActivity.class);
+            startActivity(insctructionScreen);
             finish();
+        //turn music off
         } else if (v.getId() == R.id.soundButton){
+            //if sound on
             if(soundState){
                 soundOff = (ImageButton)findViewById(R.id.soundButton);
                 soundOff.setImageResource(R.drawable.soundoff);
                 medPlay.pause();
                 soundState = false;
+            //if sound off
             }else {
                 soundOff.setImageResource(R.drawable.speaker);
                 medPlay.start();
                 soundState = true;
             }
+        //close app
         }else if (v.getId() == R.id.exitButton){
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);

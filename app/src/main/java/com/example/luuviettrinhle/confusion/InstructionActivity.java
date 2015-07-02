@@ -13,13 +13,15 @@ import android.widget.TextView;
 public class InstructionActivity extends ActionBarActivity {
 
     public void onButtonClick(View v) {
+        //open gameScreen
         if (v.getId() == R.id.playButton) {
-            Intent intent = new Intent(this, GameActivity.class);
-            startActivity(intent);
+            Intent gameScreen = new Intent(this, GameActivity.class);
+            startActivity(gameScreen);
             finish();
+        //open startScreen
         } else if (v.getId() == R.id.homeButton) {
-            Intent intent = new Intent(this, StartActivity.class);
-            startActivity(intent);
+            Intent startScreen = new Intent(this, StartActivity.class);
+            startActivity(startScreen);
             finish();
         }
     }

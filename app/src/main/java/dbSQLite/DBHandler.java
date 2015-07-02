@@ -19,19 +19,19 @@ public class DBHandler extends SQLiteOpenHelper{
     private static final String TAG = DBHandler.class.getSimpleName();
     private SQLiteDatabase db;
 
-    //Database name
+    //database name
     private static final String DATABASE_NAME = "highscoreList.db";
-    //Database version
+    //database version
     private static final int DATABASE_VERSION = 1;
-    //Table name
+    //table name
     private static final String TABLE_NAME = "scoresTable";
 
-    //Column names
+    //column names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_SCORE = "score";
 
-    //Queries
+    //queries
     private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+" ( "+KEY_ID+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"+KEY_SCORE+" INTEGER"+")";
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
 
@@ -45,14 +45,6 @@ public class DBHandler extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db){
         Log.d("table", "table created");
         db.execSQL(CREATE_TABLE);
-    }
-
-    //insert data
-    public long insert(String name, String score){
-        ContentValues val = new ContentValues();
-        val.put(DBHandler.KEY_NAME, name);
-        val.put(DBHandler.KEY_SCORE, score);
-        return db.insert(DBHandler.TABLE_NAME, null, val);
     }
 
     //upgrade table
@@ -87,19 +79,6 @@ public class DBHandler extends SQLiteOpenHelper{
         }
     }
 
-    //get one score -- unused
-    public Score getScore(int id){
-        SQLiteDatabase db = getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_NAME, new String[]{KEY_ID, KEY_NAME, KEY_SCORE}, KEY_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
-        if (cursor != null) cursor.moveToFirst();
-
-        Score score = new Score(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
-
-        cursor.close();
-        return score;
-    }
-
     //get all scores in a list
     public List<Score> getAllScores(){
 
@@ -124,22 +103,14 @@ public class DBHandler extends SQLiteOpenHelper{
         return scoreList;
     }
 
+    //drop table and create new one -- unused
     public void clearTable(){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(DROP_TABLE);
         db.execSQL(CREATE_TABLE);
     }
 
-    //update one score -- unused
-    public int getScoreCount(){
-        String countQuery = "SELECT * FROM "+TABLE_NAME;
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        cursor.close();
-        return cursor.getCount();
-    }
-
-    //update one score -- unused
+    //update one score where name is the same -- unused
     public int updateScore(Score score){
         SQLiteDatabase db = getWritableDatabase();
 
@@ -147,13 +118,13 @@ public class DBHandler extends SQLiteOpenHelper{
         values.put(KEY_NAME, score.getName());
         values.put(KEY_SCORE, score.getScore());
 
-        return db.update(TABLE_NAME, values, KEY_ID + "=?", new String[]{String.valueOf(score.getID())});
+        return db.update(TABLE_NAME, values, KEY_NAME + "=?", new String[]{String.valueOf(score.getName())});
     }
 
-    //delete one score -- not necessary
+    //delete score where name is the same -- unused
     public void deleteScore(Score score){
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, KEY_ID + "=?", new String[]{String.valueOf(score.getID())});
+        db.delete(TABLE_NAME, KEY_NAME + "=?", new String[]{String.valueOf(score.getName())});
         db.close();
     }
 }

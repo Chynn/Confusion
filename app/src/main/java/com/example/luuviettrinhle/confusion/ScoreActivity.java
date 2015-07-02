@@ -22,22 +22,30 @@ public class ScoreActivity extends ActionBarActivity {
     String highscore, playerName;
 
     public void onButtonClick(View v) {
+        //open gameScreen
         if (v.getId() == R.id.againButton) {
-            Intent intent = new Intent(this, GameActivity.class);
-            startActivity(intent);
+            Intent gameScreen = new Intent(this, GameActivity.class);
+            startActivity(gameScreen);
             finish();
+        //open startScreen
         } else if (v.getId() == R.id.homeButton) {
-            Intent intent = new Intent(this, StartActivity.class);
-            startActivity(intent);
+            Intent startScreen = new Intent(this, StartActivity.class);
+            startActivity(startScreen);
             finish();
+        //open highscoreScreen
         } else if (v.getId() == R.id.saveButton){
             Intent highscoreScreen = new Intent(this, HighscoreActivity.class);
+            //transfer highscore
             highscoreScreen.putExtra("scoreTextView", highscore);
+            //get name from EditText
             playerName = (inputNameET.getText()).toString();
+            //transfer name and screen
+            //2 = scoreScreen
             highscoreScreen.putExtra("inputNameET", playerName);
             highscoreScreen.putExtra("Screen", "2");
             startActivity(highscoreScreen);
             finish();
+        //close app
         } else if (v.getId() == R.id.exitButton){
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
@@ -68,6 +76,7 @@ public class ScoreActivity extends ActionBarActivity {
         scoreTV = (TextView)findViewById(R.id.scoreTextView);
         inputNameET = (EditText)findViewById(R.id.nameInput);
 
+        //get score
         Intent intent = getIntent();
         highscore = intent.getStringExtra("scoreTextView");
 

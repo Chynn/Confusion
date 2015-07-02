@@ -27,13 +27,8 @@ import dbSQLite.Score;
 
 public class HighscoreActivity extends ListActivity {
 
-    private DBHandler dbHandler;
-    private List<Score> scoreL;
-
-    //content
+    //content for listView
     private ArrayList<String> scoresList = new ArrayList<>();
-    private ArrayAdapter<String> adapter = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,41 +39,47 @@ public class HighscoreActivity extends ListActivity {
         TextView tView = (TextView)findViewById(R.id.textView);
         tView.setTypeface(bauhausFont);
 
+        //get score, name and screen
         Intent intent = getIntent();
-        Intent intent1 = getIntent();
-        Intent intent2 = getIntent();
+        //Intent intent1 = getIntent();
+        //Intent intent2 = getIntent();
 
         String highscore = intent.getStringExtra("scoreTextView");
-        String name = intent1.getStringExtra("inputNameET");
-        String screen = intent2.getStringExtra("Screen");
+        String name = intent.getStringExtra("inputNameET");
+        String screen = intent.getStringExtra("Screen");
 
-        dbHandler = new DBHandler(this);
+        DBHandler dbHandler = new DBHandler(this);
 
         //2 = scoreActivity
         if (Integer.parseInt(screen) == 2){
             //add test scores
             Log.d("insert", "adding name+score");
+            if (name.isEmpty()) name = "Unknown";
+            //add name+score to database
             dbHandler.addScore(new Score(name, Integer.parseInt(highscore)));
         }
 
         Log.d("read", "read all scores");
-        scoreL = new ArrayList<>();
+        //get all values of database and put in a list
+        List<Score> scoreL;
         scoreL = dbHandler.getAllScores();
 
-        for (int i = 0; i<scoreL.size(); i++){
+        //make arrayList with strings
+        for (int i = 0; i< scoreL.size(); i++){
             scoresList.add((i+1) + ". " + " " + scoreL.get(i).getName() + "\t" + scoreL.get(i).getScore());
         }
 
-        //Collections.sort(scoresList);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, scoresList);
+        //connecting rows of listView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, scoresList);
         ListView lv = (ListView)findViewById(android.R.id.list);
         lv.setAdapter(adapter);
     }
 
     public void onButtonClick(View v) {
+        //open startScreen
         if (v.getId() == R.id.backButton) {
-            Intent intent = new Intent(this, StartActivity.class);
-            startActivity(intent);
+            Intent startScreen = new Intent(this, StartActivity.class);
+            startActivity(startScreen);
             finish();
         }
     }

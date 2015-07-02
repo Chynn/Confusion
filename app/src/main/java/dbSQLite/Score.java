@@ -3,6 +3,8 @@ package dbSQLite;
 /**
  * Created by Vi on 24.06.2015.
  */
+
+//class created for getter and setter
 public class Score {
 
     int id;
@@ -14,12 +16,6 @@ public class Score {
     }
 
     public Score(String name, int score){
-        this.name = name;
-        this.score = score;
-    }
-
-    public Score(int id, String name, int score){
-        this.id = id;
         this.name = name;
         this.score = score;
     }
