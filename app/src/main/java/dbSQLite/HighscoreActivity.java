@@ -41,8 +41,6 @@ public class HighscoreActivity extends ListActivity {
 
         //get score, name and screen
         Intent intent = getIntent();
-        //Intent intent1 = getIntent();
-        //Intent intent2 = getIntent();
 
         String highscore = intent.getStringExtra("scoreTextView");
         String name = intent.getStringExtra("inputNameET");
@@ -66,7 +64,7 @@ public class HighscoreActivity extends ListActivity {
 
         //make arrayList with strings
         for (int i = 0; i< scoreL.size(); i++){
-            scoresList.add((i+1) + ". " + " " + scoreL.get(i).getName() + "\t" + scoreL.get(i).getScore());
+            scoresList.add((i+1) + ". " + " " + scoreL.get(i).getName() + "/t" + scoreL.get(i).getScore());
         }
 
         //connecting rows of listView
