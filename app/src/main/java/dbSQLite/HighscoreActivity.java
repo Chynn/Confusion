@@ -3,6 +3,7 @@ package dbSQLite;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.luuviettrinhle.confusion.R;
 import com.example.luuviettrinhle.confusion.StartActivity;
@@ -38,13 +40,16 @@ public class HighscoreActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
 
+        Typeface bauhausFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
+        TextView tView = (TextView)findViewById(R.id.textView);
+        tView.setTypeface(bauhausFont);
+
         Intent intent = getIntent();
-        String highscore = intent.getStringExtra("scoreTextView");
-
         Intent intent1 = getIntent();
-        String name = intent1.getStringExtra("inputNameET");
-
         Intent intent2 = getIntent();
+
+        String highscore = intent.getStringExtra("scoreTextView");
+        String name = intent1.getStringExtra("inputNameET");
         String screen = intent2.getStringExtra("Screen");
 
         dbHandler = new DBHandler(this);
