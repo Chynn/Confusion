@@ -11,7 +11,7 @@
 
     <!-- TextView Strings -->
     <string name="instructionTitle"> Welcome to Confusion! </string>
-    <string name="instructionTxt">"Your task is to touch the symbol displayed on the navigation bar. Touch it as fast and often as you can. You have only 2 minutes!\n \n Dont let yourself get confused with the colors we prepared. Challenge your eyes and sleight of hand. Defeat the high scores of your friends and <b>BE</b> the one to confuse!"</string>
+    <string name="instructionTxt">"Touch the green circle as often as you can . You have a period of 10 seconds. \n \n Don't let yourself get confused with the colors we prepared. With every touch on the other circles you miss a point. Challenge your eyes and sleight of hand. Defeat the high scores of your friends and <b>BE</b> the one to confuse!"</string>
     <string name="nameInput">"<i>Type in your name</i>"</string>
     <string name="scoreTitle">Your Score</string>
     <string name="scoreDefault">0</string>
