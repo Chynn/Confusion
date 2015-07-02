@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-
 public class GameActivity extends ActionBarActivity {
 
     Resources res;

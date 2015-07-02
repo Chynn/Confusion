@@ -61,7 +61,7 @@ public class HighscoreActivity extends ListActivity {
         scoreL = dbHandler.getAllScores();
 
         for (int i = 0; i<scoreL.size(); i++){
-            scoresList.add(scoreL.get(i).getID() + ". " + " " + scoreL.get(i).getName() + " " + scoreL.get(i).getScore());
+            scoresList.add((i+1) + ". " + " " + scoreL.get(i).getName() + "\t" + scoreL.get(i).getScore());
         }
 
         //Collections.sort(scoresList);
