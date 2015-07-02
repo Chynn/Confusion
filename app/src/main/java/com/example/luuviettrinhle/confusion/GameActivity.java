@@ -45,7 +45,7 @@ public class GameActivity extends ActionBarActivity {
         scores.setTypeface(bauFont);
 
 
-        res = getResources();//
+        res = getResources();
         ovRed = res.getDrawable(R.drawable.oval2);
         ovGreen = res.getDrawable(R.drawable.oval1);
         ovPurple = res.getDrawable(R.drawable.oval3);
