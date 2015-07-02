@@ -29,7 +29,7 @@ public class HighscoreActivity extends ListActivity {
     private List<Score> scoreL;
 
     //content
-    private ArrayList<String> scoresList = new ArrayList<String>();
+    private ArrayList<String> scoresList = new ArrayList<>();
     private ArrayAdapter<String> adapter = null;
 
 
@@ -38,15 +38,26 @@ public class HighscoreActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
 
+        Intent intent = getIntent();
+        String highscore = intent.getStringExtra("scoreTextView");
+
+        Intent intent1 = getIntent();
+        String name = intent1.getStringExtra("inputNameET");
+
+        Intent intent2 = getIntent();
+        String screen = intent2.getStringExtra("Screen");
+
         dbHandler = new DBHandler(this);
-        
-        //add test scores
-        Log.d("insert", "adding name+score");    //test print
-        dbHandler.addScore(new Score("Trinh", 20));
-        dbHandler.addScore(new Score("Vi", 4));
+
+        //2 = scoreActivity
+        if (Integer.parseInt(screen) == 2){
+            //add test scores
+            Log.d("insert", "adding name+score");
+            dbHandler.addScore(new Score(name, Integer.parseInt(highscore)));
+        }
 
         Log.d("read", "read all scores");
-        scoreL = new ArrayList<Score>();
+        scoreL = new ArrayList<>();
         scoreL = dbHandler.getAllScores();
 
         for (int i = 0; i<scoreL.size(); i++){
@@ -54,7 +65,7 @@ public class HighscoreActivity extends ListActivity {
         }
 
         //Collections.sort(scoresList);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, scoresList);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, scoresList);
         ListView lv = (ListView)findViewById(android.R.id.list);
         lv.setAdapter(adapter);
     }

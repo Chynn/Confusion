@@ -35,8 +35,9 @@ public class StartActivity extends ActionBarActivity {
             startActivity(intent);
             finish();
         } else if (v.getId() == R.id.highscoreButton) {
-            Intent intent = new Intent(this, HighscoreActivity.class);
-            startActivity(intent);
+            Intent highscoreScreen = new Intent(this, HighscoreActivity.class);
+            highscoreScreen.putExtra("Screen", "1");
+            startActivity(highscoreScreen);
             finish();
         } else if (v.getId() == R.id.instructionButton) {
             Intent intent = new Intent(this, InstructionActivity.class);
