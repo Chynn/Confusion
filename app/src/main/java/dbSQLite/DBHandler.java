@@ -17,6 +17,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper{
 
     private static final String TAG = DBHandler.class.getSimpleName();
+    private SQLiteDatabase db;
 
     //Database name
     private static final String DATABASE_NAME = "highscoreList.db";
@@ -46,6 +47,14 @@ public class DBHandler extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE);
     }
 
+    //insert data
+    public long insert(String name, String score){
+        ContentValues val = new ContentValues();
+        val.put(DBHandler.KEY_NAME, name);
+        val.put(DBHandler.KEY_SCORE, score);
+        return db.insert(DBHandler.TABLE_NAME, null, val);
+    }
+
     //upgrade table
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
@@ -61,13 +70,14 @@ public class DBHandler extends SQLiteOpenHelper{
         long rows = -1;
 
         try{
-            SQLiteDatabase db = getWritableDatabase();
+            db = getWritableDatabase();
 
             ContentValues values = new ContentValues();
             values.put(KEY_NAME, score.getName());
             values.put(KEY_SCORE, score.getScore());
 
             rows = db.insert(TABLE_NAME, null, values);
+
         } catch ( SQLiteException e) {
             Log.e(TAG, "insert error 1",e);
         } catch (Exception e) {

@@ -50,6 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scoreTextView"
+        android:textSize="20sp"
+        android:textColor="#4b7293"
+        android:text="Score: "
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
@@ -57,7 +60,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/timeTextView"
-        android:layout_alignEnd="@+id/iBtn2" />
+        android:textSize="20sp"
+        android:textColor="#4b7293"
+        android:text="Time: "
+        android:layout_alignStart="@+id/iBtn1"/>
 
 
 </RelativeLayout>

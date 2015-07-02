@@ -1,5 +1,6 @@
 package dbSQLite;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -8,20 +9,32 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.luuviettrinhle.confusion.R;
 import com.example.luuviettrinhle.confusion.StartActivity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import dbSQLite.DBHandler;
 import dbSQLite.Score;
 
 
-public class HighscoreActivity extends ActionBarActivity {
+public class HighscoreActivity extends ListActivity {
 
-    private static String TAG = HighscoreActivity.class.getSimpleName();
+    //Score index = new Score();
+
     private DBHandler dbHandler;
+    private List<Score> scoreL;
+    //private  String scores[] = {index.getName()};
+
+    //content
+    private ArrayList<String> scoresList = new ArrayList<String>();
+    private ArrayAdapter<String> adapter = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,34 +49,22 @@ public class HighscoreActivity extends ActionBarActivity {
         dbHandler.addScore(new Score("Vi", 4));
 
         Log.d("read", "read all scores");
-        List<Score> scoreL = dbHandler.getAllScores();
+        scoreL = new ArrayList<Score>();
+        scoreL = dbHandler.getAllScores();
 
-        for (Score score : scoreL) {
-            String log = "Id: " + score.getID() + ", Name:" + score.getName() + ", Score: " + score.getScore();
-            Log.d("player: ", log);
-        }
-    }
+        //for (Score score : scoreL) {
+        //    String log = "Id: " + score.getID() + ", Name:" + score.getName() + ", Score: " + score.getScore();
+        //    Log.d("player: ", log);
+        //}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_highscore, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        for (int i = 0; i<scoreL.size(); i++){
+            scoresList.add(scoreL.get(i).getID() + ". " + " " + scoreL.get(i).getName() + " " + scoreL.get(i).getScore());
         }
 
-        return super.onOptionsItemSelected(item);
+        //Collections.sort(scoresList);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, scoresList);
+        ListView lv = (ListView)findViewById(android.R.id.list);
+        lv.setAdapter(adapter);
     }
 
     public void onButtonClick(View v) {

@@ -14,4 +14,6 @@
     <string name="instructionTxt">"Your task is to touch the symbol displayed on the navigation bar. Touch it as fast and often as you can. You have only 2 minutes!\n \n Dont let yourself get confused with the colors we prepared. Challenge your eyes and sleight of hand. Defeat the high scores of your friends and <b>BE</b> the one to confuse!"</string>
     <string name="nameInput">"<i>Type in your name</i>"</string>
     <string name="scoreTitle">Your Score</string>
+    <string name="scoreDefault">0</string>
+    <string name="textView">Highscore</string>
 </resources>

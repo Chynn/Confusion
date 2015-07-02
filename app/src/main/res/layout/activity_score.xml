@@ -8,17 +8,6 @@
 
 
     <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="90dp"
-        android:id="@+id/highscoreButton"
-        android:layout_marginBottom="180dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onButtonClick"
-        android:src="@drawable/rang70"
-        android:background="@null"/>
-
-    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/againButton"
@@ -43,39 +32,31 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/soundButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/speaker"
-        android:background="@null"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/exitButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/exit25"
+        android:src="@drawable/exit50"
         android:background="@null"
-        android:layout_alignBottom="@id/soundButton"/>
+        android:onClick="onButtonClick"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/nameInput"
-        android:text="@string/nameInput"
-        android:textSize="22sp"
-        android:layout_above="@+id/highscoreButton"
-        android:layout_alignEnd="@+id/highscoreButton"/>
+        android:hint="@string/nameInput"
+        android:textSize="23sp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/saveButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scoreTitle"
         android:id="@+id/scoreTitle"
-        android:textSize="45sp"
+        android:textSize="60sp"
+        android:textColor="#4b7293"
         android:gravity="center"
-        android:layout_below="@+id/soundButton"
+        android:layout_below="@+id/exitButton"
         android:layout_centerHorizontal="true" />
 
     <ImageButton
@@ -85,15 +66,17 @@
         android:src="@drawable/okbutton"
         android:background="@null"
         android:layout_alignBottom="@+id/nameInput"
-        android:layout_toEndOf="@+id/nameInput"
-        android:layout_marginStart="25dp"/>
+        android:layout_toStartOf="@+id/exitButton"
+        android:onClick="onButtonClick"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scoreTextView"
+        android:layout_marginTop="25dp"
+        android:textSize="40sp"
+        android:textColor="#4b7293"
         android:layout_below="@+id/scoreTitle"
-        android:layout_alignStart="@+id/highscoreButton"
-        android:layout_marginTop="35dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
