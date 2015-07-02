@@ -64,7 +64,7 @@ public class HighscoreActivity extends ListActivity {
 
         //make arrayList with strings
         for (int i = 0; i< scoreL.size(); i++){
-            scoresList.add((i+1) + ". " + " " + scoreL.get(i).getName() + "\t\t" + scoreL.get(i).getScore());
+            scoresList.add((i+1) + ". " + " " + scoreL.get(i).getName() + "\t--\t" + scoreL.get(i).getScore());
         }
 
         //connecting rows of listView
