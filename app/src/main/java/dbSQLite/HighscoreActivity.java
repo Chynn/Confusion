@@ -75,10 +75,8 @@ public class HighscoreActivity extends ListActivity {
 
     public void onButtonClick(View v) {
         //open startScreen
-        if (v.getId() == R.id.backButton) {
-            Intent startScreen = new Intent(this, StartActivity.class);
-            startActivity(startScreen);
-            finish();
-        }
+        Intent startScreen = new Intent(this, StartActivity.class);
+        startActivity(startScreen);
+        finish();
     }
 }

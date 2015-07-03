@@ -164,12 +164,10 @@ public class GameActivity extends ActionBarActivity {
 
     public void onButtonClick(View v) {
         //if backButton clicked, set time to 0 and open startScreen
-        if (v.getId() == R.id.backButton) {
-            stopRepeatingTimerTask();
-            timerI = 0;
-            Intent startScreen = new Intent(this, StartActivity.class);
-            startActivity(startScreen);
-            finish();
-        }
+        stopRepeatingTimerTask();
+        timerI = 0;
+        Intent startScreen = new Intent(this, StartActivity.class);
+        startActivity(startScreen);
+        finish();
     }
 }

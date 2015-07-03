@@ -14,7 +14,7 @@ import dbSQLite.HighscoreActivity;
 
 public class StartActivity extends ActionBarActivity {
 
-    MediaPlayer medPlay;
+    MediaPlayer medPlay = null;
     private boolean soundState = true;
     ImageButton soundOff;
 
@@ -24,8 +24,10 @@ public class StartActivity extends ActionBarActivity {
         setContentView(R.layout.activity_start);
 
         //start music
-        medPlay = MediaPlayer.create(this, R.raw.sakuraseason);
-        medPlay.start();
+        if (medPlay == null) {
+            medPlay = MediaPlayer.create(this, R.raw.sakuraseason);
+            medPlay.start();
+        }
     }
 
     public void onButtonClick(View v) {
