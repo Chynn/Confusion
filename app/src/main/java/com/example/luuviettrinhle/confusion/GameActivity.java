@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -36,11 +37,12 @@ public class GameActivity extends ActionBarActivity {
         setContentView(R.layout.activity_game);
 
         Typeface bauhausFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
-        TextView timer = (TextView) findViewById(R.id.timeTextView);
-        timer.setTypeface(bauhausFont);
-
         Typeface bauFont = Typeface.createFromAsset(getAssets(), "bauhaus.ttf");
+
         TextView scores = (TextView) findViewById(R.id.scoreTextView);
+        TextView timer = (TextView) findViewById(R.id.timeTextView);
+
+        timer.setTypeface(bauhausFont);
         scores.setTypeface(bauFont);
 
         //get shapes
